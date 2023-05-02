@@ -11,7 +11,9 @@ const Main = () => {
         <>
             <ChefDetailsContext.Provider value={chefDetails}>
                 <Navbar />
-                <Outlet />
+               <div className="min-h-screen">
+               <Outlet />
+               </div>
                 <Footer />
             </ChefDetailsContext.Provider>
         </>
