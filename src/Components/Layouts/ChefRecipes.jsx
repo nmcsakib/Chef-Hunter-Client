@@ -43,10 +43,10 @@ const ChefRecipes = () => {
 <div className="overflow-x-auto">
 
     
-  <table className="table table-zebra w-full">
+  <table className=" -z-10 table table-zebra w-full">
     {/* head */}
     <thead>
-      <tr className=''>
+      <tr>
         <th>No.</th>
         <th>Name</th>
         <th>Ingredients</th>

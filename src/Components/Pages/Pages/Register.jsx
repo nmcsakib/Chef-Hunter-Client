@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import React, { useContext, useState } from 'react';
+import { FaExclamation} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProviders';
 
 const Register = () => {
+  const [err, setErr] = useState('');
   const {createUser, update} = useContext(AuthContext)
   const handelUserRegister = (e) => {
       e.preventDefault()
@@ -13,8 +14,8 @@ const Register = () => {
       const name = form.name.value;
       const photo = form.photo.value;
       createUser(email, password).then(res => {
-          update({displayName: name, photoURL: photo}).then(() => {}).catch(err => console.log(err))
-      }).catch(err => console.log(err))
+          update({displayName: name, photoURL: photo}).then((res) => {console.log(res.user);}).catch(err => setErr(err?.message))
+      }).catch(err => err => setErr(err?.message))
     }
    
     return (
@@ -35,22 +36,28 @@ const Register = () => {
       <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">Register to your account</h1>
 
       <form onSubmit={handelUserRegister} className="mt-6" >
+      {
+        err !== '' &&
+            <div className="border border-red-600 bg-red-200 text-center text-gray-700 flex items-center justify-center">
+           <FaExclamation/> <p className="text-md py-5 ">  {err}</p>
+        </div>
+        } 
         <div>
           <label className="block text-gray-700">Name</label>
-          <input type="text" name="name" id="" placeholder="Enter your name" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required/>
+          <input type="text" name="name" id="" placeholder="Enter your name" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required/>
         </div>
         <div  className="mt-4">
           <label className="block text-gray-700">Email Address</label>
-          <input type="email" name="" id="" placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required/>
+          <input type="email" name="email" id="" placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required/>
         </div>
         <div  className="mt-4">
           <label className="block text-gray-700">Photo URL</label>
-          <input type="text" name="photo" id="" placeholder="Enter photo url" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required/>
+          <input type="text" name="photo" id="" placeholder="Enter photo url" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required/>
         </div>
 
         <div className="mt-4">
           <label className="block text-gray-700">Password</label>
-          <input type="password" name="" id="" placeholder="Enter Password" minlength="6" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+          <input type="password" name="password" id="" placeholder="Enter Password" minLength="6" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none" required/>
         </div>
 
