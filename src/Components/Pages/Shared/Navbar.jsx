@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, Navigate } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProviders';
 
 const Navbar = () => {
   const {user, logOut} = useContext(AuthContext)
   const handelLogOut = () => {
-    logOut().then().catch(err => console.log(err))
+    logOut().then(() => {
+      <Navigate to="/"/>
+    }).catch(err => console.log(err))
 }
     return (
         <div className="navbar py-0 fixed backdrop-blur-md top-0 z-10">
@@ -16,7 +18,7 @@ const Navbar = () => {
             </label>
             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow flex-col bg-base-200 rounded-box w-52">
             <ul className="menu menu-horizontal px-1">
-            <li><Link to='/'>Home</Link></li>
+            <li><NavLink className={ isActive => isActive ? "text-blue-500" : "text-gray-500"} to='/'>Home</NavLink></li>
             <li><a>Blog</a></li>
           </ul>
             <div>
@@ -34,7 +36,7 @@ const Navbar = () => {
        
         <div className="navbar-end hidden md:flex">
              <ul className="menu menu-horizontal px-1">
-            <li><Link to="/">Home</Link></li>
+             <li><NavLink className={ isActive => isActive ? "text-blue-500" : "text-gray-500"} to='/'>Home</NavLink></li>
             <li><a>Blog</a></li>
           </ul>
             {

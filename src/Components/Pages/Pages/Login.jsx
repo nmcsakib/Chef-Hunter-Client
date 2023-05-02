@@ -16,7 +16,7 @@ const Login = () => {
         const password = form.password.value;
         logIn(email, password).then(res => {
             console.log(res.user)
-            navigate(location.state?.form?.pathname || '/')
+            navigate(location.state?.from?.pathname || '/')
         }).catch(err => setErr(err?.message))
 
     }

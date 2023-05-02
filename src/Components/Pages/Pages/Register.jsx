@@ -1,11 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { FaExclamation} from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProviders';
 
 const Register = () => {
   const [err, setErr] = useState('');
   const {createUser, update} = useContext(AuthContext)
+  const navigate = useNavigate()
+  const location = useLocation()
   const handelUserRegister = (e) => {
       e.preventDefault()
       const form = e.target;
@@ -14,7 +16,8 @@ const Register = () => {
       const name = form.name.value;
       const photo = form.photo.value;
       createUser(email, password).then(res => {
-          update({displayName: name, photoURL: photo}).then((res) => {console.log(res.user);}).catch(err => setErr(err?.message))
+          update({displayName: name, photoURL: photo}).then((res) => {}).catch(err => setErr(err?.message))
+          navigate(location.state?.from?.pathname || '/') 
       }).catch(err => err => setErr(err?.message))
     }
    
@@ -48,11 +51,11 @@ const Register = () => {
         </div>
         <div  className="mt-4">
           <label className="block text-gray-700">Email Address</label>
-          <input type="email" name="email" id="" placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required/>
+          <input type="email" name="email" id="" placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoComplete required/>
         </div>
         <div  className="mt-4">
           <label className="block text-gray-700">Photo URL</label>
-          <input type="text" name="photo" id="" placeholder="Enter photo url" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required/>
+          <input type="text" name="photo" id="" placeholder="Enter photo url" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"  autoComplete required/>
         </div>
 
         <div className="mt-4">

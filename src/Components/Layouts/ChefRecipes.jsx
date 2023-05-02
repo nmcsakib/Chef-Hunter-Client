@@ -1,19 +1,18 @@
 import React, { useContext, useState } from 'react';
-import { useLoaderData, useLocation } from 'react-router-dom';
+import { useLoaderData, useLocation, useParams } from 'react-router-dom';
 import { ChefDetailsContext } from './Main';
 import { FaHeart, FaRegHeart, FaThumbsUp } from 'react-icons/fa';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { Toaster, toast } from 'react-hot-toast';
+import { RecipesContext } from '../../Routes/PrivateRoute';
 const ChefRecipes = () => {
   const [favorite, setFavorite] = useState(false);
-    const recipes = useLoaderData()
+    const {recipes} = useContext(RecipesContext)
     const chefDetail = useContext(ChefDetailsContext);
-    const location = useLocation()
-    const {state} = location;
-    console.log(state);
-    const chef = chefDetail.find(chef => chef.id == state);
-    const {id, name, chefPicture, bio, numRecipes, numLikes, yearsOfExperience} = chef;
+    const {id} = useParams()
+    const chef = chefDetail.find(chef => chef.id == id);
+    const {name, chefPicture, bio, numRecipes, numLikes, yearsOfExperience} = chef;
     const handelFavorite = () => {
  toast('Added to favorite 🔥');
  let not = !favorite;
@@ -57,7 +56,7 @@ const ChefRecipes = () => {
     </thead>
     <tbody>
      {
-        recipes.map(recipe => <tr className='capitalize'>
+        recipes?.map(recipe => <tr className='capitalize'>
             <th>{recipe.id}</th>
             <td>{recipe.recipe_name}</td>
             <td>{recipe.ingredients.map((i, index) => <p>{index+1}. {i}</p>)}</td>
