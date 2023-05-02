@@ -21,7 +21,7 @@ const Navbar = () => {
         </div>
       </label>
             </div>
-          <a className="btn">Login</a>
+          <Link to="/login" className="btn">Login</Link>
             </ul>
           </div>
           <Link to="/" className="btn btn-glass normal-case text-xl font-mono bg-gradient-to-br from-blue-400/60 to-blue-600/60">Chef-Hunter</Link>
@@ -39,7 +39,7 @@ const Navbar = () => {
         </div>
       </label>
             </div>
-          <a className="btn">Login</a>
+            <Link to="/login" className="btn">Login</Link>
         </div>
       </div>
     );
