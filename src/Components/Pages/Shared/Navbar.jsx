@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -23,7 +24,7 @@ const Navbar = () => {
           <a className="btn">Login</a>
             </ul>
           </div>
-          <a className="btn btn-glass normal-case text-xl font-mono bg-gradient-to-br from-blue-400/60 to-blue-600/60">Chef-Hunter</a>
+          <Link to="/" className="btn btn-glass normal-case text-xl font-mono bg-gradient-to-br from-blue-400/60 to-blue-600/60">Chef-Hunter</Link>
         </div>
        
         <div className="navbar-end hidden md:flex">

@@ -1,18 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData, useLocation } from 'react-router-dom';
 import { ChefDetailsContext } from './Main';
 import { FaHeart, FaRegHeart, FaThumbsUp } from 'react-icons/fa';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import { Toaster, toast } from 'react-hot-toast';
 const ChefRecipes = () => {
+  const [favorite, setFavorite] = useState(false);
     const recipes = useLoaderData()
-    // const {recipe_name, ingredients, cooking_method, rating} = recipes;
     const chefDetail = useContext(ChefDetailsContext);
     const location = useLocation()
     const {state} = location;
     console.log(state);
     const chef = chefDetail.find(chef => chef.id == state);
     const {id, name, chefPicture, bio, numRecipes, numLikes, yearsOfExperience} = chef;
+    const handelFavorite = () => {
+ toast('Added to favorite 🔥');
+ let not = !favorite;
+     setFavorite(not)
+    }
     return (
         <div className='mt-20'>
 <div className="hero min-h-screen bg-base-200">
@@ -29,7 +35,7 @@ const ChefRecipes = () => {
   </div>
 </div>
 
-<div className=''>
+<div>
 <hr className='mb-5' />
 <h2 className=" my-10 text-3xl font-bold uppercase tracking-wide">Some recipes of {name}</h2>
 <hr className='mb-5' />
@@ -40,8 +46,8 @@ const ChefRecipes = () => {
   <table className="table table-zebra w-full">
     {/* head */}
     <thead>
-      <tr>
-        <th></th>
+      <tr className=''>
+        <th>No.</th>
         <th>Name</th>
         <th>Ingredients</th>
         <th>Cooking Method</th>
@@ -57,7 +63,7 @@ const ChefRecipes = () => {
             <td>{recipe.ingredients.map((i, index) => <p>{index+1}. {i}</p>)}</td>
             <td>{recipe.cooking_method}</td>
             <td><Rating  style={{ maxWidth: 120 }} readOnly value={recipe.rating} /></td>
-            <td><button><FaRegHeart/></button></td>
+            <td><button onClick={handelFavorite}>{favorite ? <FaHeart/> : <FaRegHeart/>}</button></td>
         </tr> )
     }
     </tbody>
@@ -65,6 +71,7 @@ const ChefRecipes = () => {
 </div>
 </div>
 </div>
+<Toaster/>
         </div>
     );
 };
