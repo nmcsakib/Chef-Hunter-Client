@@ -48,13 +48,15 @@ At your door.</h1>
 
             <h2 className="text-5xl text-center font-bold uppercase tracking-wide bg-gradient-to-r from-yellow-500 via-lime-600 to-pink-500 bg-clip-text text-transparent">Our master chefs</h2>
             <hr className="font-bold text-5xl h-10 mt-5" />
+           
             <div className='grid grid-cols-3 gap-8 px-10 mt-5 pb-5'>
         {
             chefDetails.map(chefDetail => <ChefCard key={chefDetail.id} chefDetail={chefDetail}></ChefCard>)
         }
             </div>
+           
            </div>
-            <div className=" w-full from-pink-200 via-slate-300 to-blue-500 bg-gradient-to-br">
+            <div className=" w-full bg-[url('https://cdn.pixabay.com/photo/2016/11/29/08/24/bakery-1868396__340.jpg')] bg-cover bg-no-repeat">
             <h2 className=" py-10 text-3xl text-center text-gray-800 font-bold uppercase tracking-wide"> Reviews</h2>
             <hr className='mb-5' />
             <Swiper
@@ -85,7 +87,7 @@ At your door.</h1>
             <hr className='mt-5' />
             </div>
             
-            <div className='py-5 from-blue-500 via-blue-300 to-blue-600 bg-gradient-to-br'>
+            <div className='py-5 from-slate-400 via-gray-300 to-base-400 bg-gradient-to-br'>
             <h2 className=" py-5 text-3xl text-center text-gray-800 font-bold uppercase tracking-widest"> FAQ</h2>
             <hr className='mb-5' />
             <Faq/>

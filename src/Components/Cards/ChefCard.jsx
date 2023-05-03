@@ -1,11 +1,13 @@
 import React from 'react';
 import {FaThumbsUp} from 'react-icons/fa'
+import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router-dom';
+
 const ChefCard = ({chefDetail}) => {
     const {id, name, chefPicture, numRecipes, numLikes, yearsOfExperience} = chefDetail;
     return (
         <div className="card shadow-xl text-white">
-        <figure><img src={chefPicture} alt={name} /></figure>
+       <figure> <LazyLoad offset={100}><img src={chefPicture} alt={name} /></LazyLoad></figure>
         <div className="card-body bg-white-10 backdrop-blur-lg">
           <h2 className="card-title">
             {name}

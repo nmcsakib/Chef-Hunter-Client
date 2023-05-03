@@ -43,7 +43,7 @@ const Navbar = () => {
         <div className="navbar-end hidden md:flex">
              <ul className="menu menu-horizontal px-1">
              <li><NavLink className={ ({isActive}) => isActive ? "text-blue-500" : "text-gray-900"} to='/'>Home</NavLink></li>
-            <li><a>Blog</a></li>
+            <li><Link to="/blog">Blog</Link></li>
           </ul>
             {
               user ?

@@ -13,7 +13,7 @@ const ReviewCards = ({review}) => {
 
   <div className="sm:flex sm:justify-between sm:gap-4">
     <div>
-      <h3 className="text-lg font-bold text-gray-900 sm:text-xl">
+      <h3 className="text-lg font-bold text-black sm:text-xl">
        {review.review}
       </h3>
 
@@ -30,7 +30,7 @@ const ReviewCards = ({review}) => {
   </div>
 
   <div className="mt-4">
-    <p className="max-w-1/2 text-sm text-gray-500">
+    <p className="max-w-1/2 text-sm text-gray-900">
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum
       provident a, ipsa maiores deleniti consectetur nobis et eaque.
     </p>
