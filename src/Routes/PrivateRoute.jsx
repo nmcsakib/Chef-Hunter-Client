@@ -6,10 +6,10 @@ export const RecipesContext = createContext()
 
 const PrivateRoute = ({children}) => {
     const recipes = useLoaderData()
+    console.log(recipes);
     const location = useLocation()
-   const state = location.state;
     const {user, loading} = useContext(AuthContext)
-    console.log(state);
+   
     
     if(loading){
         return <div className="flex justify-center mt-20"><progress className="progress w-56"></progress></div>

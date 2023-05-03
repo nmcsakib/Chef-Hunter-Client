@@ -14,7 +14,7 @@ const Register = () => {
       const email = form.email.value;
       const password = form.password.value;
       const name = form.name.value;
-      const photo = form.photo.value;
+      const photo = form.photo.value || "https://brur.ac.bd/wp-content/uploads/2019/03/male.jpg";
       createUser(email, password).then(res => {
           update({displayName: name, photoURL: photo}).then((res) => {}).catch(err => setErr(err?.message))
           navigate(location.state?.from?.pathname || '/') 
@@ -46,20 +46,20 @@ const Register = () => {
         </div>
         } 
         <div>
-          <label className="block text-gray-700">Name</label>
+          <label className="block text-gray-700">Name <sup className="text-red-600">*</sup></label>
           <input type="text" name="name" id="" placeholder="Enter your name" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required/>
         </div>
         <div  className="mt-4">
-          <label className="block text-gray-700">Email Address</label>
+          <label className="block text-gray-700">Email Address <sup className="text-red-600">*</sup></label>
           <input type="email" name="email" id="" placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoComplete required/>
         </div>
         <div  className="mt-4">
           <label className="block text-gray-700">Photo URL</label>
-          <input type="text" name="photo" id="" placeholder="Enter photo url" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"  autoComplete required/>
+          <input type="text" name="photo" id="" placeholder="Enter photo url" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"  autoComplete />
         </div>
 
         <div className="mt-4">
-          <label className="block text-gray-700">Password</label>
+          <label className="block text-gray-700">Password <sup className="text-red-600">*</sup></label>
           <input type="password" name="password" id="" placeholder="Enter Password" minLength="6" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none" required/>
         </div>

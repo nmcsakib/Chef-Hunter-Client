@@ -18,16 +18,22 @@ const Navbar = () => {
             </label>
             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow flex-col bg-base-200 rounded-box w-52">
             <ul className="menu menu-horizontal px-1">
-            <li><NavLink className={ isActive => isActive ? "text-blue-500" : "text-gray-500"} to='/'>Home</NavLink></li>
+            <li><NavLink className={ ({isActive}) => isActive ? "text-blue-500" : "text-gray-900"} to='/'>Home</NavLink></li>
             <li><a>Blog</a></li>
           </ul>
-            <div>
+          {
+              user ?
+              <div className='flex items-center tooltip tooltip-left' data-tip={user.displayName}>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        <div className="w-10 rounded-full " >
+          <img src={user.photoURL} />
+
         </div>
       </label>
+        <button onClick={handelLogOut} className="btn btn-warning">Logout</button>
             </div>
+            :
+            <NavLink to="/login"  className={ ({isActive}) => isActive ? "text-blue-500 btn btn-warning" : "text-gray-900 btn btn-warning" } >Login</NavLink>}
           <Link to="/login" className="btn">Login</Link>
             </ul>
           </div>
@@ -36,7 +42,7 @@ const Navbar = () => {
        
         <div className="navbar-end hidden md:flex">
              <ul className="menu menu-horizontal px-1">
-             <li><NavLink className={ isActive => isActive ? "text-blue-500" : "text-gray-500"} to='/'>Home</NavLink></li>
+             <li><NavLink className={ ({isActive}) => isActive ? "text-blue-500" : "text-gray-900"} to='/'>Home</NavLink></li>
             <li><a>Blog</a></li>
           </ul>
             {
@@ -51,7 +57,7 @@ const Navbar = () => {
         <button onClick={handelLogOut} className="btn btn-warning">Logout</button>
             </div>
             :
-            <Link to="/login" className="btn">Login</Link>}
+            <NavLink to="/login"  className={ ({isActive}) => isActive ? "text-blue-500 btn btn-warning" : "text-gray-900 btn btn-warning" } >Login</NavLink>}
         </div>
       </div>
     );
