@@ -10,8 +10,11 @@ import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper";
 import ReviewCards from '../Cards/ReviewCards';
 import Faq from '../FAQ/Faq';
-
-
+import { MapContainer } from 'react-leaflet/MapContainer'
+import { TileLayer } from 'react-leaflet/TileLayer'
+import 'leaflet/dist/leaflet.css';
+import { Marker, Popup } from 'react-leaflet';
+const position = [23.8103,90.4125]
 const Home = () => {
     const chefDetails = useContext(ChefDetailsContext);
     const reviews = [
@@ -91,6 +94,26 @@ At your door.</h1>
             <h2 className=" py-5 text-3xl text-center text-gray-800 font-bold uppercase tracking-widest"> FAQ</h2>
             <hr className='mb-5' />
             <Faq/>
+            </div>
+            <div className='py-5 from-slate-400 via-gray-300 to-base-400 bg-gradient-to-br w-full'>
+            <h2 className=" py-5 text-3xl text-center text-gray-800 font-bold uppercase tracking-widest"> Where we live</h2>
+            <hr className='mb-5' />
+            <div className="flex justify-center items-center px-10">
+            <MapContainer  className="h-[500px] w-1/2" center={position} zoom={8} scrollWheelZoom={true}>
+    <TileLayer
+      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    />
+    <Marker position={position} >
+      <Popup>
+      We lived in <br /> Bangladesh.
+      </Popup>
+    </Marker>
+  </MapContainer>
+  <h1 className="text-5xl text-gray-800 font-bold uppercase text-center">
+    Dhaka, Bangladesh
+  </h1>
+            </div>
             </div>
           
         </div>

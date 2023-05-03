@@ -17,29 +17,17 @@ const ChefRecipes = () => {
     const {name, chefPicture, bio, numRecipes, numLikes, yearsOfExperience} = chef;
   
     const handelFavorite = () => {
- toast('Added to favorite 🔥');
- let not = !favorite;
-     setFavorite(not)
+ if(!favorite){
+  toast('Added to favorite 🔥');
+ }
+ setFavorite(true)
     }
    
     return (
-        <div className='mt-0'>
-{/* <div className="hero min-h-screen bg-base-200">
-  <div className="hero-content flex-col lg:flex-row">
-    <img src={chefPicture} className="max-w-sm rounded-lg shadow-2xl" />
-    <div>
-      <div className="flex gap-5 items-center "><h1 className="text-5xl font-bold">{name}</h1>
-      <div className="badge badge-secondary"><FaThumbsUp/> {numLikes}+</div></div>
-      <p className="py-6">{bio}</p>
-      <p>Experience: {yearsOfExperience} years</p>
-          <p>Recipes: {numRecipes} </p>
-      
-    </div>
-  </div>
-</div> */}
+        <div>
 
 <div className='flex items-center justify-center min-h-screen from-pink-200 via-slate-300 to-blue-500 bg-gradient-to-br'>
-    <div className='w-full py-8 flex flex-row items-center justify-center mx-auto bg-[#FFFBFB] rounded-lg shadow-xl'>
+    <div className='w-full py-8 flex flex-row items-center justify-center mx-auto bg-black/40 rounded-lg '>
         <div className="flex flex-col md:flex-row w-full md:w-5/6 space-x-0 md:space-x-8">
             <div className="w-full md:w-2/5 flex flex-col items-center justify-center">
                 <figure className="w-1/2 md:w-full  rounded-full overflow-hidden">
@@ -72,7 +60,7 @@ const ChefRecipes = () => {
 <div className="overflow-x-auto">
 
     
-  <table className=" -z-10 table table-zebra w-full">
+  <table className=" table table-zebra w-full">
     {/* head */}
     <thead>
       <tr>
@@ -81,7 +69,7 @@ const ChefRecipes = () => {
         <th>Ingredients</th>
         <th>Cooking Method</th>
         <th>Ratings</th>
-        <th>Add to favorite</th>
+        <th>Add to favorite </th>
       </tr>
     </thead>
     <tbody>
@@ -92,7 +80,7 @@ const ChefRecipes = () => {
             <td>{recipe.ingredients.map((i, index) => <p>{index+1}. {i}</p>)}</td>
             <td>{recipe.cooking_method}</td>
             <td><Rating  style={{ maxWidth: 120 }} readOnly value={recipe.rating} /></td>
-            <td><button onClick={handelFavorite}>{favorite ? <FaHeart/> : <FaRegHeart/>}</button></td>
+            <td> <button onClick={handelFavorite}>{favorite ? <FaHeart/> : <FaRegHeart/>}</button></td>
         </tr> )
       
     }

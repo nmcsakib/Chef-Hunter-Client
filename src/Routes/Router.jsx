@@ -13,7 +13,7 @@ const router = createBrowserRouter([
         path: '/',
         element: <Main/>,
         errorElement: <ErrorPage/>,
-        loader: () => fetch('http://localhost:3000/chef-details'),
+        loader: () => fetch('https://chef-hunter-server-nmcsakib.vercel.app/chef-details'),
         children: [
             {
                 path: '/',
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
             {
                 path: 'chef-recipes/:id',
                 element: <PrivateRoute><ChefRecipes/></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:3000/recipes/${params.id}`)
+                loader: ({params}) => fetch(`https://chef-hunter-server-nmcsakib.vercel.app/recipes/${params.id}`)
             },
         ]
     }

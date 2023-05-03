@@ -10,7 +10,7 @@ const Navbar = () => {
     }).catch(err => console.log(err))
 }
     return (
-        <div className="navbar py-0 fixed backdrop-blur-md top-0 z-10">
+        <div className="navbar py-0 fixed backdrop-blur-md top-0 z-20">
         <div className="navbar-start justify-between md:justify-start flex-row-reverse md:flex-row w-full">
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">

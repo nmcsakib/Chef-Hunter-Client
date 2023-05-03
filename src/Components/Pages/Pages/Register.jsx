@@ -15,10 +15,23 @@ const Register = () => {
       const password = form.password.value;
       const name = form.name.value;
       const photo = form.photo.value || "https://brur.ac.bd/wp-content/uploads/2019/03/male.jpg";
+      if(!email || !password){
+        setErr("A user cannot submit empty email and password fields")
+        return
+      }
+      if(err == "Firebase: Password should be at least 6 characters (auth/weak-password)."){
+        setErr("The password is less than 6 characters")
+        return
+      }
+      if(err == "Firebase: Error (auth/email-already-in-use)."){
+        setErr("Already Registered, please login with password or give a new email. ")
+        return
+      }
+
       createUser(email, password).then(res => {
           update({displayName: name, photoURL: photo}).then((res) => {}).catch(err => setErr(err?.message))
           navigate(location.state?.from?.pathname || '/') 
-      }).catch(err => err => setErr(err?.message))
+      }).catch( err => setErr(err?.message))
     }
    
     return (
@@ -47,11 +60,11 @@ const Register = () => {
         } 
         <div>
           <label className="block text-gray-700">Name <sup className="text-red-600">*</sup></label>
-          <input type="text" name="name" id="" placeholder="Enter your name" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required/>
+          <input type="text" name="name" id="" placeholder="Enter your name" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete />
         </div>
         <div  className="mt-4">
           <label className="block text-gray-700">Email Address <sup className="text-red-600">*</sup></label>
-          <input type="email" name="email" id="" placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoComplete required/>
+          <input type="email" name="email" id="" placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoComplete />
         </div>
         <div  className="mt-4">
           <label className="block text-gray-700">Photo URL</label>
@@ -60,8 +73,8 @@ const Register = () => {
 
         <div className="mt-4">
           <label className="block text-gray-700">Password <sup className="text-red-600">*</sup></label>
-          <input type="password" name="password" id="" placeholder="Enter Password" minLength="6" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                focus:bg-white focus:outline-none" required/>
+          <input type="password" name="password" id="" placeholder="Enter Password" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                focus:bg-white focus:outline-none" />
         </div>
 
         <div className="text-right mt-2">
