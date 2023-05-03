@@ -9,6 +9,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper";
 import ReviewCards from '../Cards/ReviewCards';
+import Faq from '../FAQ/Faq';
 
 
 const Home = () => {
@@ -81,6 +82,13 @@ At your door.</h1>
       
        }
             </Swiper>
+            <hr className='mt-5' />
+            </div>
+            
+            <div className='py-5 from-blue-500 via-blue-300 to-blue-600 bg-gradient-to-br'>
+            <h2 className=" py-5 text-3xl text-center text-gray-800 font-bold uppercase tracking-widest"> FAQ</h2>
+            <hr className='mb-5' />
+            <Faq/>
             </div>
           
         </div>
