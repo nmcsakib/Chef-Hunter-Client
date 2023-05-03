@@ -2,7 +2,7 @@ import React from 'react';
 
 const ReviewCards = ({review}) => {
     return (
-        <div className='w-1/2 mx-auto backdrop-blur-3xl my-10'>
+        <div className=' w-3/4 md:w-1/2 mx-auto backdrop-blur-3xl my-10'>
             <a
   href="#"
   className="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8"

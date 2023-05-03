@@ -11,8 +11,8 @@ const ChefCard = ({chefDetail}) => {
         <div className="card-body bg-white-10 backdrop-blur-lg">
           <h2 className="card-title">
             {name}
-            <div className="badge badge-secondary"><FaThumbsUp/> {numLikes}+</div>
           </h2>
+            <div className="badge badge-secondary"><FaThumbsUp/> {numLikes}+</div>
           <p>Experience: {yearsOfExperience} years</p>
           <p>Recipes: {numRecipes} </p>
           <div className="card-actions justify-end">

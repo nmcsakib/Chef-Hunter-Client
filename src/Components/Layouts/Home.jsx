@@ -49,7 +49,7 @@ At your door.</h1>
             <h2 className="text-5xl text-center font-bold uppercase tracking-wide bg-gradient-to-r from-yellow-500 via-lime-600 to-pink-500 bg-clip-text text-transparent">Our master chefs</h2>
             <hr className="font-bold text-5xl h-10 mt-5" />
            
-            <div className='grid grid-cols-3 gap-8 px-10 mt-5 pb-5'>
+            <div className='grid md:grid-cols-3 gap-8 px-10 mt-5 pb-5'>
         {
             chefDetails.map(chefDetail => <ChefCard key={chefDetail.id} chefDetail={chefDetail}></ChefCard>)
         }

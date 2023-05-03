@@ -18,8 +18,8 @@ const Navbar = () => {
             </label>
             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow flex-col bg-base-200 rounded-box w-52">
             <ul className="menu menu-horizontal px-1">
-            <li><NavLink className={ ({isActive}) => isActive ? "text-blue-500" : "text-gray-900"} to='/'>Home</NavLink></li>
-            <li><a>Blog</a></li>
+            <li><NavLink className={ ({isActive}) => isActive ? "text-blue-500" : "text-white"} to='/'>Home</NavLink></li>
+            <li><NavLink className={ ({isActive}) => isActive ? "text-blue-500" : "text-white"} to='/blog'>Blog</NavLink></li>
           </ul>
           {
               user ?
@@ -34,7 +34,7 @@ const Navbar = () => {
             </div>
             :
             <NavLink to="/login"  className={ ({isActive}) => isActive ? "text-blue-500 btn btn-warning" : "text-gray-900 btn btn-warning" } >Login</NavLink>}
-          <Link to="/login" className="btn">Login</Link>
+          
             </ul>
           </div>
           <Link to="/" className="btn btn-glass normal-case text-xl font-mono bg-gradient-to-br from-blue-400/60 to-blue-600/60">Chef-Hunter</Link>
@@ -42,8 +42,8 @@ const Navbar = () => {
        
         <div className="navbar-end hidden md:flex">
              <ul className="menu menu-horizontal px-1">
-             <li><NavLink className={ ({isActive}) => isActive ? "text-blue-500" : "text-gray-900"} to='/'>Home</NavLink></li>
-            <li><Link to="/blog">Blog</Link></li>
+             <li><NavLink className={ ({isActive}) => isActive ? "text-blue-500" : "text-white"} to='/'>Home</NavLink></li>
+            <li><NavLink className={ ({isActive}) => isActive ? "text-blue-500" : "text-white"} to='/blog'>Blog</NavLink></li>
           </ul>
             {
               user ?

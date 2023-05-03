@@ -53,8 +53,9 @@ const ChefRecipes = () => {
                     <p className="inline text-gray-700 font-normal leading-6 w-full text-base">{bio}</p>
                 </div>
                 <ul className=" space-x-4 flex flex-row justify-center w-full mb-4">
-                    <li className="text-sm text-gray-800"><strong className="text-gray-900">{numRecipes}</strong>Recipes</li>
-                  <li className="text-sm text-gray-800"><strong className="text-gray-900"> {numLikes}</strong>Likes</li>
+                    <li className="text-sm text-gray-800"><strong className="text-gray-900">{numRecipes}</strong> Recipes</li>
+                  <li className="text-sm text-gray-800"><strong className="text-gray-900"> {numLikes}</strong> Likes</li>
+                  <li className="text-sm text-gray-800"> Experience: <strong className="text-gray-900">{yearsOfExperience}Years</strong></li>
                     
                 </ul>
                 
