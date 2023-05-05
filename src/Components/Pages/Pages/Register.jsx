@@ -2,14 +2,14 @@ import React, { useContext, useState } from 'react';
 import { FaExclamation} from 'react-icons/fa';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProviders';
-
+import { toast } from 'react-hot-toast';
 const Register = () => {
   const [err, setErr] = useState('');
   const {createUser, update} = useContext(AuthContext)
   const navigate = useNavigate()
   const location = useLocation()
   const handelUserRegister = (e) => {
-      e.preventDefault()
+     
       const form = e.target;
       const email = form.email.value;
       const password = form.password.value;
@@ -27,11 +27,15 @@ const Register = () => {
         setErr("Already Registered, please login with password or give a new email. ")
         return
       }
-
+      
       createUser(email, password).then(res => {
-          update({displayName: name, photoURL: photo}).then((res) => {}).catch(err => setErr(err?.message))
+          update({displayName: name, photoURL: photo}).then((res) => {
+            
+          }).catch(err => setErr(err?.message))
           navigate(location.state?.from?.pathname || '/') 
+          toast('Registered Successfully.')
       }).catch( err => setErr(err?.message))
+     
     }
    
     return (
@@ -40,7 +44,7 @@ const Register = () => {
 <section className="flex flex-col md:flex-row-reverse items-center ">
 
   <div className=" hidden lg:block w-full md:w-1/2 xl:w-2/3 py-10">
-    <img src="https://media.istockphoto.com/id/1176594977/photo/grinding-black-pepper-over-pasta.jpg?s=612x612&w=0&k=20&c=GWFrb6lN-mqOh3dWEBUkQxpsuoOFuUPDWOwN5caPjsc=" alt="" className="w-full object-cover blur-sm h-screen"/>
+    <img src="https://i.ibb.co/vHbnV60/istockphoto-1176594977-612x612.jpg" alt="" className="w-full object-cover blur-sm h-screen"/>
   </div>
 
   <div className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto  md:w-1/2 xl:w-1/3 px-6 lg:px-16 xl:px-12

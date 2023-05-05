@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className="bg-[url('https://media.istockphoto.com/id/1220448113/photo/male-cook-in-black-uniform-and-latex-gloves-holds-an-empty-round-vintage-black-cast-iron-pan.jpg?s=612x612&w=0&k=20&c=34S1zW4GuU2uUlUOnliSZ2SRLR_irFkH6N4ROx8nPtY=')] bg-cover  bg-no-repeat bg-center text-white">
+        <div className="bg-[url('https://i.ibb.co/qCMBRBD/istockphoto-1220448113-612x612.jpg')] bg-cover  bg-no-repeat bg-center text-white">
         <footer className="footer p-10 grid grid-cols-3 ">
   <div>
     <span className="footer-title">Services</span> 

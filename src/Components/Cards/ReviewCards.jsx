@@ -3,7 +3,7 @@ import React from 'react';
 const ReviewCards = ({review}) => {
     return (
         <div className=' w-3/4 md:w-1/2 mx-auto backdrop-blur-3xl my-10'>
-            <a
+            <article
   href="#"
   className="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8"
 >
@@ -38,16 +38,13 @@ const ReviewCards = ({review}) => {
 
   <dl className="mt-6 flex gap-4 sm:gap-6">
     <div className="flex flex-col-reverse">
-      <dt className="text-sm font-medium text-gray-600">Published</dt>
+      <dt className="text-sm font-medium text-gray-600">Reviewed</dt>
       <dd className="text-xs text-gray-500">31st June, 2021</dd>
     </div>
 
-    <div className="flex flex-col-reverse">
-      <dt className="text-sm font-medium text-gray-600">Reading time</dt>
-      <dd className="text-xs text-gray-500">3 minute</dd>
-    </div>
+   
   </dl>
-</a>
+</article>
         </div>
     );
 };

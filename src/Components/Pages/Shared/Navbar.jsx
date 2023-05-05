@@ -10,7 +10,7 @@ const Navbar = () => {
     }).catch(err => console.log(err))
 }
     return (
-        <div className="navbar py-0 fixed backdrop-blur-md top-0 z-20">
+        <nav className="navbar py-0 fixed backdrop-blur-md top-0 z-20">
         <div className="navbar-start justify-between md:justify-start flex-row-reverse md:flex-row w-full">
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -23,23 +23,27 @@ const Navbar = () => {
           </ul>
           {
               user ?
+              <>
               <div className='flex items-center tooltip tooltip-left' data-tip={user.displayName}>
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <label htmlFor="modal-update" tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full " >
           <img src={user.photoURL} />
 
         </div>
       </label>
-        <button onClick={handelLogOut} className="btn btn-warning">Logout</button>
             </div>
+        <button onClick={handelLogOut} className="btn btn-warning">Logout</button>
+              </>
             :
-            <NavLink to="/login"  className={ ({isActive}) => isActive ? "text-blue-500 btn btn-warning" : "text-gray-900 btn btn-warning" } >Login</NavLink>}
+            <NavLink  to="/login"  className={ ({isActive}) => isActive ? "text-blue-500 btn btn-warning" : "text-gray-900 btn btn-warning" } >Login</NavLink>}
           
             </ul>
           </div>
           <Link to="/" className="btn btn-glass normal-case text-xl font-mono bg-gradient-to-br from-blue-400/60 to-blue-600/60">Chef-Hunter</Link>
         </div>
        
+       {/* For small devices */}
+
         <div className="navbar-end hidden md:flex">
              <ul className="menu menu-horizontal px-1">
              <li><NavLink className={ ({isActive}) => isActive ? "text-blue-500" : "text-white"} to='/'>Home</NavLink></li>
@@ -47,19 +51,26 @@ const Navbar = () => {
           </ul>
             {
               user ?
+              <>
               <div className='flex items-center tooltip tooltip-left' data-tip={user.displayName}>
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <label  htmlFor="modal-update" tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full " >
           <img src={user.photoURL} />
 
         </div>
       </label>
-        <button onClick={handelLogOut} className="btn btn-warning">Logout</button>
             </div>
+        <button onClick={handelLogOut} className="btn btn-warning">Logout</button>
+              </>
             :
-            <NavLink to="/login"  className={ ({isActive}) => isActive ? "text-blue-500 btn btn-warning" : "text-gray-900 btn btn-warning" } >Login</NavLink>}
+            <NavLink  to="/login"  className={ ({isActive}) => isActive ? "text-blue-500 btn btn-warning" : "text-gray-900 btn btn-warning" } >Login</NavLink>}
         </div>
-      </div>
+        
+        {/* For small devices */}
+
+
+      
+      </nav>
     );
 };
 

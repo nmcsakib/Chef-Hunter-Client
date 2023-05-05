@@ -1,28 +1,21 @@
 import React, { useContext, useState } from 'react';
 import { useLoaderData, useLocation, useParams } from 'react-router-dom';
 import { ChefDetailsContext } from './Main';
-import { FaHeart, FaRegHeart, FaThumbsUp } from 'react-icons/fa';
-import { Rating } from '@smastrom/react-rating'
-import '@smastrom/react-rating/style.css'
-import { Toaster, toast } from 'react-hot-toast';
+  import '@smastrom/react-rating/style.css'
+  import { Toaster, toast } from 'react-hot-toast';
 import { RecipesContext } from '../../Routes/PrivateRoute';
+import RecipeCard from '../Cards/RecipeCard';
 const ChefRecipes = () => {
   const chefDetail = useContext(ChefDetailsContext);
-  const recipes = useContext(RecipesContext);
-  const [favorite, setFavorite] = useState(false);
+   const recipes = useContext(RecipesContext);
+    
   const {id} = useParams()
-  const recipe = recipes.find(n => n.chef_id == id)
-  console.log(id, recipe);
+    const recipe = recipes.find(n => n.chef_id == id)
+  
     const chef = chefDetail.find(chef => chef.id == id);
     const {name, chefPicture, bio, numRecipes, numLikes, yearsOfExperience} = chef;
   
-    const handelFavorite = () => {
- if(!favorite){
-  toast('Added to favorite 🔥');
- }
- setFavorite(true)
-    }
-   
+  
     return (
         <div>
 
@@ -74,14 +67,9 @@ const ChefRecipes = () => {
     </thead>
     <tbody>
      {
-        recipe?.recipes?.map((recipe, index) => <tr key={index} className='capitalize'>
-            <th>{recipe.id}</th>
-            <td>{recipe.recipe_name}</td>
-            <td>{recipe.ingredients.map((i, index) => <p>{index+1}. {i}</p>)}</td>
-            <td>{recipe.cooking_method}</td>
-            <td><Rating  style={{ maxWidth: 120 }} readOnly value={recipe.rating} /></td>
-            <td> <button onClick={handelFavorite}>{favorite ? <FaHeart/> : <FaRegHeart/>}</button></td>
-        </tr> )
+        recipe?.recipes?.map((recipe, index) => <RecipeCard recipe={recipe} key={index}>
+
+        </RecipeCard> )
       
     }
     </tbody>

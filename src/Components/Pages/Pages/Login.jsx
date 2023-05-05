@@ -37,7 +37,7 @@ const Login = () => {
             <section className="flex flex-col md:flex-row items-center my-10">
 
                 <div className=" hidden lg:block w-full md:w-1/2 xl:w-2/3 ">
-                    <img src="https://media.istockphoto.com/id/1176594977/photo/grinding-black-pepper-over-pasta.jpg?s=612x612&w=0&k=20&c=GWFrb6lN-mqOh3dWEBUkQxpsuoOFuUPDWOwN5caPjsc=" alt="" className="w-full h-full object-cover blur-sm " />
+                    <img src="https://i.ibb.co/vHbnV60/istockphoto-1176594977-612x612.jpg" alt="" className="w-full h-full object-cover blur-sm " />
                 </div>
 
                 <div className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto  md:w-1/2 xl:w-1/3  px-6 lg:px-16 xl:px-12
